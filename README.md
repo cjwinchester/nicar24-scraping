@@ -10,8 +10,8 @@ The session is scheduled for Sunday, March 10, from 9 a.m. – 12:30 p.m. in roo
 
 Open the Terminal application. Copy and paste this text into the Terminal and hit enter:
 
-```bash
-cd ~/Desktop/hands_on_classes/20240310-sunday-web-scraping-with-python && source env/bin/activate
+```
+cd Desktop\hands_on_classes\20240310-sunday-web-scraping-with-python && .\env\Scripts\activate
 ```
 
 ### Course outline
