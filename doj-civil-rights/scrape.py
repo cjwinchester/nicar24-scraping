@@ -49,8 +49,11 @@ for page_number in range(last_page_number+1):
             item.find('h2').text.split()
         )
 
-        link = item.find('a')
-        detail_url = f'https://www.justice.gov{link}'
+        link = item.find('a').get('href')
+        if link:
+            detail_url = f'https://www.justice.gov{link}'
+        else:
+            link = ''
 
         date = item.find('time').get('datetime').split('T')[0]
 
