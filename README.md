@@ -42,6 +42,8 @@ cd Desktop\hands_on_classes\20240310-sunday-web-scraping-with-python && .\env\Sc
     - [IRE board members](ire-board)
     - [Queensland workplace incidents](qld-incidents)
     - [Texas custodial death reports](tx-custodial-death-reports)
+    - [U.S. DOJ civil rights speeches and press releases](doj-civil-rights)
+    - [Black Wall Street Times article links](black-wall-street-times)
 
 
 ### Other resources
