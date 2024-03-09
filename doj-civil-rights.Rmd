@@ -1,0 +1,46 @@
+---
+title: "DOJ Civil Rights Speeches & Press Releases"
+output:
+---
+
+```{r}
+library(tidyverse)
+library(rvest)
+```
+
+set the main page
+```{r}
+url <- "https://www.justice.gov/crt/civil-rights-division-press-releases-speeches"
+```
+
+find last page
+```{r}
+last_page <- read_html(str_glue(url,"?page=0")) |> 
+  html_elements("a[aria-label='Last page']") |> html_attr("href") |> parse_number()
+```
+
+run scrape
+```{r}
+pages <- c(0:last_page)
+data <- NULL
+
+for (page in pages){
+  html <- read_html(paste0(url,"?page=",page))
+  articles <- html |> html_elements("article.news-content-listing")
+  title <- html |> html_elements("div.node-type") |> html_text2()
+  summary <- articles |> html_elements("h2") |> html_text2()
+  link <- articles |> html_elements("a") |> html_attr("href")
+  date <- articles |> html_elements("time") |> html_attr("datetime")
+  temp <- tibble(date, title, summary, link) |> mutate(link = paste0("https://justice.gov",link))
+  data <- rbind(data,temp)
+  
+# scraper tracker:  
+  print(paste0("Scraped page",page))
+  Sys.sleep(.5)
+}
+
+# final file:
+write_csv(data, "doj-civil-rights-speeches-press-releases.csv")
+
+```
+
